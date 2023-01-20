@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="app.css">
     <title>Boggle</title>
 </head>
 
@@ -14,18 +15,23 @@
     <section id="info">
         <div id="timer"></div>
         <div id="score"></div>
-        <div id="result"></div>
+        {% with warnings = get_flashed_messages(with_categories=false) %}
+        {% if warnings %}{% for msg in warnings %}
+        <div id="result">{{msg}}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
     </section>
-    <form action="/home" method="post">
+    <form action="/" method="post">
         <input type="text" name="guess" id="guess">
-        <button>Submit Guess</button>
+        <button id="submit">Submit Guess</button>
     </form>
-    <main id="board">
-        <table>
+    <main>
+        <table id="board">
             {% for row in game_board %}
             <tr>
                 {% for letter in row %}
-                <td>{{letter}}</td>
+                <td class="letter">{{letter}}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
