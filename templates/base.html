@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boggle</title>
+</head>
+
+<body>
+    <h1>Boggle</h1>
+    <section id="info">
+        <div id="timer"></div>
+        <div id="score"></div>
+        <div id="result"></div>
+    </section>
+    <main id="board">
+        <table>
+            {% for row in game_board %}
+            <tr>
+                {% for letter in row %}
+                <td>{{letter}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
