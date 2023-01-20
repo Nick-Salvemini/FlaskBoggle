@@ -11,7 +11,7 @@ boggle_game = Boggle()
 
 game_board = boggle_game.make_board()
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def make_game():
     
     
