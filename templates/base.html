@@ -15,6 +15,10 @@
         <div id="score"></div>
         <div id="result"></div>
     </section>
+    <form action="/home" method="post">
+        <input type="text" name="guess" id="guess">
+        <button>Submit Guess</button>
+    </form>
     <main id="board">
         <table>
             {% for row in game_board %}
