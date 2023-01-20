@@ -15,14 +15,10 @@
     <section id="info">
         <div id="timer"></div>
         <div id="score"></div>
-        {% with warnings = get_flashed_messages(with_categories=false) %}
-        {% if warnings %}{% for msg in warnings %}
-        <div id="result">{{msg}}</div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
+        <div id="result"></div>
     </section>
-    <form action="/" method="post">
+    <!-- <form action="/check_word" method="post"> -->
+    <form>
         <input type="text" name="guess" id="guess">
         <button id="submit">Submit Guess</button>
     </form>
