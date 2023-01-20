@@ -1,4 +1,4 @@
-let $guess = $('#guess').value()
+let $guess = $('#guess').val()
 const $button = $('#submit')
 const $result = $('#result')
 
@@ -28,6 +28,7 @@ function checkWordScore(word) {
 $button.on('click', async function (evt) {
     evt.preventDefault();
     await checkWord();
+
     answerObj = await getJsonResponse();
 
     word = answerObj['result']

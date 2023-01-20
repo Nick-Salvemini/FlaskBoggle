@@ -1,9 +1,10 @@
 #board {
     table-layout: fixed;
-    width: 100px;
+    width: 150px;
     border: 2px solid black;
 }
 
 .letter {
     border: 2px solid black;
+    text-align: center;
 }

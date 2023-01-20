@@ -4,7 +4,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'itsasecret'
-debug = DebugToolbarExtension
+debug = DebugToolbarExtension(app)
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 boggle_game = Boggle()
@@ -19,6 +19,12 @@ game_board = boggle_game.make_board()
 
 @app.route('/')
 def make_game():
+
+    if session.get('board'):
+        game_board = session['board']
+    else:
+        game_board = boggle_game.make_board()
+        session['board'] = game_board
     
     # guess = request.form['guess']
     # check_word = boggle_game.check_valid_word(game_board, guess)
