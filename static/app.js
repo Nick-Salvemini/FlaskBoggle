@@ -2,8 +2,10 @@ let $guess = $('#guess').val()
 const $button = $('#submit')
 const $result = $('#result')
 
+const $scoreboard = $('#score')
 let totalScore = 0
-const $score = totalScore
+let $score = totalScore
+$scoreboard.text = $score
 
 async function checkWord() {
     let word = $guess;
@@ -34,12 +36,12 @@ $button.on('click', async function (evt) {
     word = answerObj['result']
 
     if (word === 'not-word')
-        $result.val(`${word} is not a word`)
+        $result.text(`${word} is not a word`)
     else if (word === 'not-on-board')
-        $result.val(`${word} is not on the current board`)
+        $result.text(`${word} is not on the current board`)
     else
         wordScore = checkWordScore(word)
-    $result.val(`${word} was worth ${wordScore} points!`)
+    $result.text(`${word} was worth ${wordScore} points!`)
     totalScore += wordScore
 })
 

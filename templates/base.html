@@ -12,9 +12,15 @@
 <body>
     <h1>Boggle</h1>
     <section id="info">
-        <div id="timer"></div>
-        <div id="score"></div>
-        <div id="result"></div>
+        <div>
+            <h2 id="timer"></h2>
+        </div>
+        <div>
+            <h2 id="score"></h2>
+        </div>
+        <div>
+            <h2 id="result"></h2>
+        </div>
     </section>
     <!-- <form action="/check_word" method="post"> -->
     <form>
@@ -32,10 +38,10 @@
             {% endfor %}
         </table>
     </main>
+
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
-
     <script src="static/app.js"></script>
 </body>
 
