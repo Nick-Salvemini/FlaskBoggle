@@ -15,16 +15,23 @@ boggle_game = Boggle()
 #     game_board = boggle_game.make_board()
 #     session['board'] = game_board
 
-game_board = boggle_game.make_board()   
+# game_board = boggle_game.make_board()  
+
+# print('***', game_board)
+
+
 
 @app.route('/')
 def make_game():
 
     if session.get('board'):
         game_board = session['board']
+
+        print('xxx', game_board)
     else:
         game_board = boggle_game.make_board()
         session['board'] = game_board
+        print('zzz', game_board)
     
     # guess = request.form['guess']
     # check_word = boggle_game.check_valid_word(game_board, guess)
@@ -37,8 +44,17 @@ def make_game():
 
 @app.route('/check_word')
 def request_check_word():
-    guess = request.args.get('word')
+    guess = request.args.get('response')
+
+    print(guess)
+
+    game_board = session['board']
+
     check_word = boggle_game.check_valid_word(game_board, guess)
+
+    print(check_word)
+    print('---',game_board)
+
     response = {'result': check_word}
     json_response = jsonify(response)
     return json_response
