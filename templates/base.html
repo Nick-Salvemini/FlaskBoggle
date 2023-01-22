@@ -13,7 +13,7 @@
     <h1>Boggle</h1>
     <section id="info">
         <div>
-            <h2 id="timer"></h2>
+            <h2 id="timer" class="start"></h2>
         </div>
         <div>
             <h2 id="score"></h2>
@@ -22,7 +22,6 @@
             <h2 id="result"></h2>
         </div>
     </section>
-    <!-- <form action="/check_word" method="post"> -->
     <form>
         <input type="text" name="guess" id="guess">
         <button id="submit">Submit Guess</button>
@@ -38,6 +37,13 @@
             {% endfor %}
         </table>
     </main>
+
+    <div>
+        <h2 id="highScore"></h2>
+    </div>
+    <form>
+        <button id="resetButton" class="resetButton">Reset Board</button>
+    </form>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>

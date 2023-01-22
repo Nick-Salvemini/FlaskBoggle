@@ -1,5 +1,5 @@
 from boggle import Boggle
-from flask import Flask, render_template, redirect, flash, jsonify, request, session
+from flask import Flask, render_template, jsonify, request, session
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -9,61 +9,23 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 boggle_game = Boggle()
 
-# if session.get('board'):
-#     game_board = session['board']
-# else:
-#     game_board = boggle_game.make_board()
-#     session['board'] = game_board
-
-# game_board = boggle_game.make_board()  
-
-# print('***', game_board)
-
-
-
 @app.route('/')
 def make_game():
-
     if session.get('board'):
         game_board = session['board']
-
-        print('xxx', game_board)
     else:
         game_board = boggle_game.make_board()
         session['board'] = game_board
-        print('zzz', game_board)
-    
-    # guess = request.form['guess']
-    # check_word = boggle_game.check_valid_word(game_board, guess)
-    # response = {'result': check_word}
-    # json_response = jsonify(response)
-    # flash(json_response)
-    # flash(guess)
+
+    print('*************',jsonify({'response': 'hello'}))
     
     return render_template('home.html', game_board=game_board)
 
 @app.route('/check_word')
 def request_check_word():
     guess = request.args.get('response')
-
-    print(guess)
-
     game_board = session['board']
-
     check_word = boggle_game.check_valid_word(game_board, guess)
-
-    print(check_word)
-    print('---',game_board)
-
     response = {'result': check_word}
     json_response = jsonify(response)
     return json_response
-
-    # guess = request.args.get('word')
-    # response = {'result': check_word}
-    # json_response = jsonify(response)
-    # flash(guess)
-    # return json_response
-    # flash(guess)
-    # return guess
-
